@@ -27,31 +27,31 @@ export function getDetailsContentLayout(ymaps) {
         {% endif %}
     </div>
     `,
-    // {
-    //   build: () => {
-    //     BalloonContentLayout.superclass.build.call(this);
+    {
+      build: function() {
+        BalloonContentLayout.superclass.build.call(this);
 
-    //     const { details } = this.getData().object.properties;
+        const { details } = this.getData().object.properties;
 
-    //     if (details) {
-    //       const container = this.getElement().querySelector('.details-chart');
+        if (details) {
+          const container = this.getElement().querySelector('.details-chart');
 
-    //       this.connectionChart = createChart(
-    //         container,
-    //         details.chart,
-    //         details.isActive
-    //       );
-    //     }
-    //   },
+          this.connectionChart = createChart(
+            container,
+            details.chart,
+            details.isActive
+          );
+        }
+      },
 
-    //   clear: () => {
-    //     if (this.connectionChart) {
-    //       this.connectionChart.destroy();
-    //     }
+      clear: function() {
+        if (this.connectionChart) {
+          this.connectionChart.destroy();
+        }
 
-    //     BalloonContentLayout.superclass.clear.call(this);
-    //   }
-    // }
+        BalloonContentLayout.superclass.clear.call(this);
+      }
+    }
   );
 
   return BalloonContentLayout;
